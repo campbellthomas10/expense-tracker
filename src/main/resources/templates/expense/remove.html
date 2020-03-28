@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<h1 th:text="${title}"></h1>
+
+<form method="POST" style="max-width: 600px;">
+    <div class="form-group" th:each="expense:${expenses}">
+        <input  type="checkbox" name="expenseIds"  th:value="${expense.id}" th:id="${expense.id}"/>
+        <label th:for="${expense.id}" th:text="${expense.name}"></label>
+    </div>
+    <input type="submit" value="Remove Expenses"/>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+    <h1 th:text="${title}"></h1>
+
+    <p th:unless="${expenses} and ${expenses.size()}">No Expenses!</p>
+
+    <table class="table" th:if="${expenses.size() != 0}">
+
+        <tr>
+            <th>Expense</th>
+            <th>Cost</th>
+        </tr>
+
+        <tr th:each="expense : ${expenses}">
+            <td th:text="${expense.name}"></td>
+            <td th:text="'$' + ${expense.cost}"></td>
+        </tr>
+
+    </table>
+
+    <p>
+        <a href="/expenses/add">Add</a>
+        <a href="/expenses/remove">Remove</a>
+    </p>
+
+</body>
+</html>
